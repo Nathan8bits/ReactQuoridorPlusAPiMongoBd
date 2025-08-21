@@ -1,0 +1,72 @@
+Usaremos o Vite ao invés de instalar o React pelo npm.
+O Vite ajuda a organizar os arquivos e bibliotecas:
+    npm create vite@latest
+
+Entre na pasta do projeto e instale as dependências:
+    npm install
+    obs: esse comando cria o node-modules
+
+Para executar use:
+    npm run dev
+
+_____________________________________________________
+pages
+  '-->Home
+      '--> index.jsx
+
+Referenciar o componente cujo nome do arquivo é index.jsx:
+    ```import Home from './pages/Home'```
+______________________________________________________
+
+OBS: Código Javascript dentro de { }
+
+exemplo com map:
+
+    const users = [{
+        id: '001',
+        nome: 'natan,
+    }, 
+    {
+        id: '002',
+        nome: 'outro',
+    }]
+
+    {
+        users.map( (user) => (
+            <div key={user.id}>
+                <p>nome: {user.name}</p>
+            </div>
+        ) )
+    }
+OBS: o MAP() precisa de uma KEY para identificar os itens.
+
+* Conectar com a API:
+    Baixe o Axios:
+        npm install axios
+    
+    Crie a seguinte estrutura de arquivos:
+        src/services/api.js
+
+        api.js:
+        ```
+            import axios from 'axios'
+
+            const api = axios.create({
+                baseURL: 'http://localhost:300' 
+            })
+            
+            export default api
+        ```
+        E no componente React Home importe a api:
+            import api from '../../services/api'
+
+    Para usar evento de página carregada no componente importe o useEffect do React:
+        import { useEffect } from 'react'
+        ...
+        useEffect(() => {
+            getUsers()
+        }, [])
+
+    OBS: Instale a extensão VScode Simple React Snippets
+
+    OBS: Para passar parâmetros no React: <button type="button" onClick={() => deleteUsers(user.id)}>
