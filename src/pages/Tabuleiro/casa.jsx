@@ -31,8 +31,6 @@ function Casa(props) {
                 && classe == 'j2') {
       props.setIndexjogador(1)
     } 
-
-    
     /*
     console.log(`clicou na casa: ${props.index}, posicao: ${props.posicao}`)
     console.log(`posi atual jogador: ${props.jogador[props.indexJogador]}`)

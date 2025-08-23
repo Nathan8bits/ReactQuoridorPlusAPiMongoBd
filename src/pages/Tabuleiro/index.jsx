@@ -5,7 +5,6 @@ import Casa from './casa'
 import LacunaV from './lacunaV'
 import LacunaH from './lacunaH'
 import Centro from './centro'
-import Peca from './peca'
 
 function Tabuleiro () {
 
