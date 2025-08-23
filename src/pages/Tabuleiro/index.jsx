@@ -9,7 +9,7 @@ import Centro from './centro'
 function Tabuleiro () {
 
   const [jogador, setJogador] = useState([13, 67]) //posição, t
-  const [indexJogadorSelecionado, setIndexJogadorSelecionado] =  useState(0)
+  const [indexJogadorSelecionado, setIndexJogadorSelecionado] =  useState(null)
   
   useEffect(() => {
   console.log(`jogador - (${indexJogadorSelecionado}) 

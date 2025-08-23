@@ -14,7 +14,8 @@ function Casa(props) {
 
   function clickCasa() {
     if(props.posicao != props.jogador[props.indexJogador] 
-      && props.posicao != props.jogador[1 - props.indexJogador]) {
+      && props.posicao != props.jogador[1 - props.indexJogador]
+      && props.indexJogador != null) {
       //atualizar a poiscao do jogador 
       let newJogadores = [...props.jogador]
       newJogadores[props.indexJogador] = props.posicao
@@ -23,13 +24,15 @@ function Casa(props) {
       props.setIndexjogador(null)
       console.log('RESETOU INDEX JOGADOR')
 
-    } else if (props.indexJogador == null 
+    } else if (props.indexJogador === null 
                 && classe == 'j1') {
       props.setIndexjogador(0)
+      console.log('Jogador1')
     
-    } else if(props.indexJogador == null 
+    } else if(props.indexJogador === null 
                 && classe == 'j2') {
       props.setIndexjogador(1)
+      console.log('Jogador2')
     } 
     /*
     console.log(`clicou na casa: ${props.index}, posicao: ${props.posicao}`)
