@@ -8,6 +8,9 @@ table {
 }
 
 .casa {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     background-color: rgb(72, 74, 74);
     width: 40px;
     height: 40px;

@@ -3,15 +3,42 @@ import './style.css'
 function Casa(props) {
   // Decide se a casa tem um jogador
   let classe = ''
-  if (props.posicao === props.jogador[0]) classe = 'j1'
-  else if (props.posicao === props.jogador[1]) classe = 'j2'
+  if (props.posicao === props.jogador[0]) {
+    classe = 'j1'
+    //props.setIndexJogador(0)
+    }
+  else if (props.posicao === props.jogador[1]) {
+    classe = 'j2'
+    //props.setIndexJogador(1)
+  }
 
   function clickCasa() {
-    let newJogadores = [...props.jogador]
-    newJogadores[props.indexJogadorSelecionado] = props.posicao
-    props.setJogador(newJogadores)
+    if(props.posicao != props.jogador[props.indexJogador] 
+      && props.posicao != props.jogador[1 - props.indexJogador]) {
+      //atualizar a poiscao do jogador 
+      let newJogadores = [...props.jogador]
+      newJogadores[props.indexJogador] = props.posicao
+      props.setJogador(newJogadores)
+      //resetar o index De jogador selecionado
+      props.setIndexjogador(null)
+      console.log('RESETOU INDEX JOGADOR')
+
+    } else if (props.indexJogador == null 
+                && classe == 'j1') {
+      props.setIndexjogador(0)
+    
+    } else if(props.indexJogador == null 
+                && classe == 'j2') {
+      props.setIndexjogador(1)
+    } 
+
+    
+    /*
     console.log(`clicou na casa: ${props.index}, posicao: ${props.posicao}`)
-  }
+    console.log(`posi atual jogador: ${props.jogador[props.indexJogador]}`)
+    console.log(`index do jogador selecionado: ${props.indexJogador}`)
+    */
+    }
 
   return (
     <td

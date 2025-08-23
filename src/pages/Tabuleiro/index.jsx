@@ -1,6 +1,6 @@
 import './style.css'
 import jogador1 from '../../assets/jogador1.png'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Casa from './casa'
 import LacunaV from './lacunaV'
 import LacunaH from './lacunaH'
@@ -10,30 +10,39 @@ import Peca from './peca'
 function Tabuleiro () {
 
   const [jogador, setJogador] = useState([13, 67]) //posição, t
-                                          
-  const [indexJogadorSelecionado, setIndexjogadorSelecionado] =  useState(0)
+  const [indexJogadorSelecionado, setIndexJogadorSelecionado] =  useState(0)
+  
+  useEffect(() => {
+  console.log(`jogador - (${indexJogadorSelecionado}) 
+      sua posicao: ${jogador[indexJogadorSelecionado]}
+      `)  // aqui o valor de jogador[0] já é o novo
+  }, [jogador, indexJogadorSelecionado])//monitona mudanças no estado
+  
+
   const [movPosi, setMovPosi] = useState()
 
-  let qntddCasas = 0
-
-  function incrementQntddCasas() {
-    qntddCasas++
-  }
+  let qntddCasas = -1
 
      return (
        <>
        <div className="container">
         <table>
           <tr className="trChegada">
-            {Array.from({length: 9}, (_, i) => (
-              <>
-                <Casa index={`${i} - casa`} posicao={qntddCasas} jogador={jogador} setJogador={setJogador} indexJogadorSelecionado={indexJogadorSelecionado}>
-                  {incrementQntddCasas()}
-
-                </Casa>
-                {i < 8 && <LacunaV index={`${i} - lacunaV`} tipo={'v'}></LacunaV>}
-              </>
-            ))}
+            {Array.from({length: 9}, (_, i) => {
+              qntddCasas++
+                return (
+                  <>
+                    <Casa 
+                      index={`${i} - casa`} 
+                      posicao={qntddCasas} 
+                      jogador={jogador} 
+                      setJogador={setJogador} 
+                      indexJogador={indexJogadorSelecionado}
+                      setIndexJogador={setIndexJogadorSelecionado}></Casa>
+                    {i < 8 && <LacunaV index={`${i} - lacunaV`} tipo={'v'}></LacunaV>}
+                  </>
+                )
+            })}
           </tr>
 
           {Array.from(({length: 7}), (_, linha) => (
@@ -48,13 +57,21 @@ function Tabuleiro () {
               </tr>
 
               <tr key={`${linha} - linhaCasas`}>
-              {Array.from({length: 9}, (_, i) => (
+              {Array.from({length: 9}, (_, i) => {
+                qntddCasas++
+                return (
                 <>
-                  <Casa index={`${i} - casa`} posicao={qntddCasas} jogador={jogador} setJogador={setJogador} indexJogadorSelecionado={indexJogadorSelecionado}></Casa>
-                    {incrementQntddCasas()}
+                  <Casa 
+                    index={`${i} - casa`} 
+                    posicao={qntddCasas} 
+                    jogador={jogador} 
+                    setJogador={setJogador} 
+                    indexJogador={indexJogadorSelecionado}
+                    setIndexjogador={setIndexJogadorSelecionado}></Casa>
                   {i < 8 && <LacunaV index={`${i} - lacunaV`} tipo={'v'}></LacunaV>}
                 </>
-              ))}
+                )
+              })}
               </tr>
             </>
           ))}
@@ -69,13 +86,21 @@ function Tabuleiro () {
           </tr>
 
           <tr className="trChegada">
-            {Array.from({length: 9}, (_, i) => (
-              <>
-                <Casa index={`${i} - casa`} posicao={qntddCasas} jogador={jogador} setJogador={setJogador} indexJogadorSelecionado={indexJogadorSelecionado}></Casa>
-                  {incrementQntddCasas()}
-                {i < 8 && <LacunaV index={`${i} - lacunaV`} tipo={'v'}></LacunaV>}
-              </>
-            ))}
+            {Array.from({length: 9}, (_, i) => {
+              qntddCasas++
+              return (
+                <>
+                  <Casa 
+                    index={`${i} - casa`} 
+                    posicao={qntddCasas} 
+                    jogador={jogador} 
+                    setJogador={setJogador} 
+                    indexJogador={indexJogadorSelecionado}
+                    setIndexJogador={setIndexJogadorSelecionado}></Casa>
+                  {i < 8 && <LacunaV index={`${i} - lacunaV`} tipo={'v'}></LacunaV>}
+                </>
+              )
+            })}
           </tr>
 
         </table>
