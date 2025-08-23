@@ -70,3 +70,19 @@ OBS: o MAP() precisa de uma KEY para identificar os itens.
     OBS: Instale a extensão VScode Simple React Snippets
 
     OBS: Para passar parâmetros no React: <button type="button" onClick={() => deleteUsers(user.id)}>
+
+
+_________________________________________________________________
+    const elem = document.querySelector("#pai > #filho");
+
+    if (elem) {
+        console.log("Elemento encontrado");
+    } else {
+        console.log("Elemento nao encontrado");
+    }
+
+
+    ----------------------------------------------------
+    pai = document.querySelector('.pai');
+    possui_div_filho = pai.querySelector('.filho') != null;
+_________________________________________________________________
