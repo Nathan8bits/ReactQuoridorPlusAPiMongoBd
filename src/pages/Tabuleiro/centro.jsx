@@ -32,7 +32,7 @@ export default function Centro(props) {
             lacunaPrev = [props.posicao + xy[1], props.posicao + xy[1] + 1, 'h']
         }
 
-        props.setLacunasPrev(prev => [...prev, lacunaPrev]);
+        //props.setLacunasPrev(prev => [...prev, lacunaPrev]);
 
         props.setLacunasPrev(lacunaPrev)
         return lacunaPrev
@@ -50,7 +50,7 @@ export default function Centro(props) {
 
     return (
         <>
-            <td key={props.index} className="centro"  onClick={clickCentro}></td>
+            <td key={props.index} className={`centro`}  onClick={clickCentro}></td>
             
         </>
     )

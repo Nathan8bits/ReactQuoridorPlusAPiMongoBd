@@ -1,0 +1,19 @@
+* Análise de Requistos
+
+[X] tabuleiro 9x9 com as células podendo conter as peças
+    e as lacunas conter os bloqueadores;
+
+** Os movimentos do peão:
+    [ ] de apenas uma casa por vez, nas direções: para frente, para trás, ou para os lados;
+    [ ] Pulo: se o peão adversário estiver exatamente no local para onde você iria movimentar seu peão,
+        é permitido andar 2 casas, pulando o peão adversário.
+    [ ] caso um peão adversário estiver à sua frente com um bloqueio logo atrás. 
+        Impossibilitado o pulo, pode-se, alternativamente, mover-se em diagonal para a esquerda ou a direita 
+        do peão adversário caso não haja também um bloqueio do lado escolhido.
+
+** 10 bloqueadores para cada jogador:
+    [X] Bloqueadores ocupam duas lacunas, na vertical ou na horizontal;
+    [ ] Bloqueadores impedem os peões de irem para as casa do lado oposto;
+    [ ] Bloqueadores não podem impedir totalmente o adversário de cumprir o objetivo;
+
+[ ] O objetivo do jogo é chegar na linha de início do adversário.

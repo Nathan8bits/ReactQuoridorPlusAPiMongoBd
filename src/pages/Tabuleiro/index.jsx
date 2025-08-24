@@ -12,14 +12,15 @@ function Tabuleiro () {
   const [indexJogadorSelecionado, setIndexJogadorSelecionado] =  useState(null)
   const [lacunasPrev, setLacunasPrev] = useState([[-1, -1], [-1, -1]])
   const [contClickCentro, setconClickCentro] = useState(1)
+  const [movPosiPeca, setMovPosiPeca] = useState([])
   useEffect(() => {
   console.log(`jogador - (${indexJogadorSelecionado}) 
       sua posicao: ${jogador[indexJogadorSelecionado]}
       `)  // aqui o valor de jogador[0] já é o novo
-  }, [jogador, indexJogadorSelecionado, lacunasPrev, contClickCentro])//monitona mudanças no estado
+  }, [jogador, indexJogadorSelecionado, lacunasPrev, contClickCentro, movPosiPeca])//monitona mudanças no estado
   
 
-  const [movPosi, setMovPosi] = useState()
+
 
   let qntddCasas = -1
   let qntddLacunasV = -1
@@ -50,6 +51,8 @@ function Tabuleiro () {
               return (
                 <>
                   <Casa 
+                    movPosi={movPosiPeca}
+                    setMoviPosi={setMovPosiPeca}
                     posicao={qntddCasas} 
                     jogador={jogador} 
                     setJogador={setJogador} 
@@ -97,6 +100,8 @@ function Tabuleiro () {
                 return (
                 <>
                   <Casa 
+                    movPosi={movPosiPeca}
+                    setMoviPosi={setMovPosiPeca}
                     posicao={qntddCasas} 
                     jogador={jogador} 
                     setJogador={setJogador} 
@@ -142,6 +147,8 @@ function Tabuleiro () {
               return (
                 <>
                   <Casa 
+                    movPosi={movPosiPeca}
+                    setMoviPosi={setMovPosiPeca}
                     posicao={qntddCasas} 
                     jogador={jogador} 
                     setJogador={setJogador} 
