@@ -21,21 +21,22 @@ function Casa(props) {
       newJogadores[props.indexJogador] = props.posicao
       props.setJogador(newJogadores)
       //resetar o index De jogador selecionado
-      props.setIndexjogador(null)
+      props.setIndexJogador(null)
+      console.log(props.indexJogador)
       console.log('RESETOU INDEX JOGADOR')
 
     } else if (props.indexJogador === null 
                 && classe == 'j1') {
-      props.setIndexjogador(0)
+      props.setIndexJogador(0)
       console.log('Jogador1')
     
     } else if(props.indexJogador === null 
                 && classe == 'j2') {
-      props.setIndexjogador(1)
+      props.setIndexJogador(1)
       console.log('Jogador2')
     } 
+    console.log(`clicou na casa posicao: ${props.posicao}`)
     /*
-    console.log(`clicou na casa: ${props.index}, posicao: ${props.posicao}`)
     console.log(`posi atual jogador: ${props.jogador[props.indexJogador]}`)
     console.log(`index do jogador selecionado: ${props.indexJogador}`)
     */

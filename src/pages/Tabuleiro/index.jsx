@@ -10,17 +10,33 @@ function Tabuleiro () {
 
   const [jogador, setJogador] = useState([13, 67]) //posição, t
   const [indexJogadorSelecionado, setIndexJogadorSelecionado] =  useState(null)
-  
+  const [lacunasPrev, setLacunasPrev] = useState([[-1, -1], [-1, -1]])
+  const [contClickCentro, setconClickCentro] = useState(1)
   useEffect(() => {
   console.log(`jogador - (${indexJogadorSelecionado}) 
       sua posicao: ${jogador[indexJogadorSelecionado]}
       `)  // aqui o valor de jogador[0] já é o novo
-  }, [jogador, indexJogadorSelecionado])//monitona mudanças no estado
+  }, [jogador, indexJogadorSelecionado, lacunasPrev, contClickCentro])//monitona mudanças no estado
   
 
   const [movPosi, setMovPosi] = useState()
 
   let qntddCasas = -1
+  let qntddLacunasV = -1
+  function addQntddLacunasV(i) {
+    if(i < 8) {
+      qntddLacunasV++
+    }
+  }
+  let qntddLacunasH = -1
+
+  let  qntddCentro = -1
+  function addQntddCentro(i) {
+    if(i < 8) {
+      qntddCentro++
+    }
+  }
+
 
      return (
        <>
@@ -29,45 +45,68 @@ function Tabuleiro () {
           <tr className="trChegada">
             {Array.from({length: 9}, (_, i) => {
               qntddCasas++
-                return (
-                  <>
-                    <Casa 
-                      index={`${i} - casa`} 
-                      posicao={qntddCasas} 
-                      jogador={jogador} 
-                      setJogador={setJogador} 
-                      indexJogador={indexJogadorSelecionado}
-                      setIndexJogador={setIndexJogadorSelecionado}></Casa>
-                    {i < 8 && <LacunaV index={`${i} - lacunaV`} tipo={'v'}></LacunaV>}
-                  </>
-                )
+              i < 8 ? qntddLacunasV++ : null
+                
+              return (
+                <>
+                  <Casa 
+                    posicao={qntddCasas} 
+                    jogador={jogador} 
+                    setJogador={setJogador} 
+                    indexJogador={indexJogadorSelecionado}
+                    setIndexJogador={setIndexJogadorSelecionado}></Casa>
+                  {i < 8 && 
+                  <LacunaV 
+                    prev={lacunasPrev} 
+                    posicao={qntddLacunasV} 
+                    tipo={'v'}></LacunaV>}
+                </>
+              )
             })}
           </tr>
 
           {Array.from(({length: 7}), (_, linha) => (
             <>
               <tr key={`${linha} - linhaLacunaH`}>
-              { Array.from(({length: 9}), (_, i) => (
+              { Array.from(({length: 9}), (_, i) => {
+                qntddLacunasH++
+                addQntddCentro(i)
+
+                return (
                 <>
-                  <LacunaH index={`${i} - lacunaH`} tipo={'h'}></LacunaH>
-                  { i < 8 && <Centro index={`${i} - centro`}></Centro> }
+                  <LacunaH 
+                    prev={lacunasPrev} 
+                    posicao={qntddLacunasH} 
+                    tipo={'h'}></LacunaH>
+                  { i < 8 && 
+                  <Centro 
+                    setContClick={setconClickCentro}
+                    contClick={contClickCentro}
+                    setLacunasPrev={setLacunasPrev} 
+                    posicao={qntddCentro}></Centro> }
                 </>
-              ))}
+                )
+              })}
               </tr>
 
               <tr key={`${linha} - linhaCasas`}>
               {Array.from({length: 9}, (_, i) => {
                 qntddCasas++
+                addQntddLacunasV(i)
+
                 return (
                 <>
                   <Casa 
-                    index={`${i} - casa`} 
                     posicao={qntddCasas} 
                     jogador={jogador} 
                     setJogador={setJogador} 
                     indexJogador={indexJogadorSelecionado}
-                    setIndexjogador={setIndexJogadorSelecionado}></Casa>
-                  {i < 8 && <LacunaV index={`${i} - lacunaV`} tipo={'v'}></LacunaV>}
+                    setIndexJogador={setIndexJogadorSelecionado}></Casa>
+                  {i < 8 && 
+                  <LacunaV
+                    prev={lacunasPrev}
+                    posicao={qntddLacunasV} 
+                    tipo={'v'}></LacunaV>}
                 </>
                 )
               })}
@@ -76,27 +115,43 @@ function Tabuleiro () {
           ))}
           
           <tr>
-          { Array.from(({length: 9}), (_, i) => (
-                <>
-                  <LacunaH index={`${i} - lacunaH`} tipo={'h'}></LacunaH>
-                  { i < 8 && <Centro index={`${i} - centro`}></Centro> }
-                </>
-              ))}
+          { Array.from(({length: 9}), (_, i) => {
+            qntddLacunasH++
+            addQntddCentro(i)
+                
+            return (
+              <>
+                <LacunaH 
+                  prev={lacunasPrev}
+                  posicao={qntddLacunasH} 
+                  tipo={'h'}></LacunaH>
+                { i < 8 && 
+                <Centro 
+                  setLacunasPrev={setLacunasPrev} 
+                  posicao={qntddCentro}></Centro> }
+              </>
+            )
+            })}
           </tr>
 
           <tr className="trChegada">
             {Array.from({length: 9}, (_, i) => {
               qntddCasas++
+              addQntddLacunasV(i)
+
               return (
                 <>
                   <Casa 
-                    index={`${i} - casa`} 
                     posicao={qntddCasas} 
                     jogador={jogador} 
                     setJogador={setJogador} 
                     indexJogador={indexJogadorSelecionado}
                     setIndexJogador={setIndexJogadorSelecionado}></Casa>
-                  {i < 8 && <LacunaV index={`${i} - lacunaV`} tipo={'v'}></LacunaV>}
+                  {i < 8 && 
+                  <LacunaV 
+                    prev={lacunasPrev}
+                    posicao={qntddLacunasV} 
+                    tipo={'v'}></LacunaV>}
                 </>
               )
             })}

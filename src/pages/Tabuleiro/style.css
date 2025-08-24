@@ -31,6 +31,10 @@ table {
     border: none;
 }
 
+.lacunaPrev {
+    background-color: aquamarine;
+}
+
 .centro {
     width: 10px;
     height: 10px;

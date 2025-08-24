@@ -1,0 +1,14 @@
+
+8 == [17, 35, 18, 19]
+9 == [18, 36, 27, 28]
+10 == [19, 37, 28, 29]
+11 == [29, 38, 29, 30]
+
+
+if(contagemClick == 0) {
+            props.setLacunasPrev([props.posicao, props.posicao+8, 'v'])
+//            return [props.posicao, props.posicao+8]
+        } else if (contagemClick == 1) {
+            props.setLacunasPrev([props.posicao + xy[1], props.posicao + xy[1] + 1, 'h'])
+           //return [props.posicao + xy[1], props.posicao + xy[1] + 1]
+        }
