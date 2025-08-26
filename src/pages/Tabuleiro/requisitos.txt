@@ -4,7 +4,7 @@
     e as lacunas conter os bloqueadores;
 
 ** Os movimentos do peão:
-    [ ] de apenas uma casa por vez, nas direções: para frente, para trás, ou para os lados;
+    [X] de apenas uma casa por vez, nas direções: para frente, para trás, ou para os lados;
     [ ] Pulo: se o peão adversário estiver exatamente no local para onde você iria movimentar seu peão,
         é permitido andar 2 casas, pulando o peão adversário.
     [ ] caso um peão adversário estiver à sua frente com um bloqueio logo atrás. 
