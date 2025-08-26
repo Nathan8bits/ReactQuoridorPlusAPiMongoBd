@@ -37,14 +37,14 @@ export default function Centro(props) {
         props.setLacunasPrev(lacunaPrev)
         return lacunaPrev
     }
-
+    
     function clickCentro() {
         if(props.posicao > 7 && props.posicao < 56) {
             let lv = lacunasVizinhas()
             //props.setLacunasPrev(lv)
             console.log(`centro: ${props.posicao}, click ${props.contClick},`)
             console.log(`Lacunas vizinhas: ${lv}`)
-
+            console.log(` Lacunas Prev: ${props.prev}`)
         }
     }
 

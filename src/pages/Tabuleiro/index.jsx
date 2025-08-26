@@ -7,7 +7,7 @@ function Tabuleiro () {
 
   const [jogador, setJogador] = useState([13, 67]) //posição dos jogadores
   const [indexJogadorSelecionado, setIndexJogadorSelecionado] =  useState(null)
-  const [bloqueio, setBloqueio] = useState([-1, 'v'])
+  const [bloqueio, setBloqueio] = useState([]) //posicao, tipo
   
   useEffect(() => {
     console.log(`jogador - (${indexJogadorSelecionado}) sua posicao: ${jogador[indexJogadorSelecionado]}`)  // aqui o valor de jogador[0] já é o novo

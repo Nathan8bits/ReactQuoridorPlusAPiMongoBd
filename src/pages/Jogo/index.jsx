@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import './style.css'
-import jogador1 from '../../assets/jogador1.png'
-import jogador2 from '../../assets/jogador2.png'
+import './styleJogo.css'
+//import jogador1 from '../../assets/jogador1.png'
+//import jogador2 from '../../assets/jogador2.png'
 
 
 function Jogo() {

@@ -7,6 +7,10 @@ table {
     background-color: rgb(128, 152, 152);
 }
 
+.bloqueio {
+    background-color: brown;
+}
+
 .casa {
     background-color: rgb(72, 74, 74);
     width: 40px;

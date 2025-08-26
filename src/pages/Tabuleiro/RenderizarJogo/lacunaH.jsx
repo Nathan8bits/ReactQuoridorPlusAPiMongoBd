@@ -1,9 +1,36 @@
-import './style.css'
+//import './style.css'
 
 function LacunaH(props) {
     let classe = ''
+
+    function ehLacunaFixa() {
+        let estaFixada = false
+        props.lacunaFixa.forEach((index) => {
+            if(index[1] == 'h' && props.posicao == index[0]){
+                console.log(index)
+                console.log(`posicao: ${props.posicao}; tipo: ${props.tipo}`)
+                estaFixada = true   
+            }
+
+        })
+        return estaFixada
+    }
     
-    if (props.prev[2] == 'h' 
+    if( 
+        //props.lacunaFixa.length > 0
+        //&& props.lacunaFixa[props.lacunaFixa.length - 1][1] == 'v'
+        //&& props.posicao == props.lacunaFixa[props.lacunaFixa.length - 1][0]
+        ehLacunaFixa()    
+    ) 
+    {
+        console.log('ACUNA FIXADA')
+        console.log(`clicou na lacuna: ${props.posicao}, tipo: ${props.tipo}`)        
+            classe = 'bloqueio'
+        
+    }
+
+    else if (
+        props.prev[2] == 'h' 
         &&(props.prev[0] == props.posicao 
         || props.prev[1] == props.posicao)) {
         classe = 'lacunaPrev'

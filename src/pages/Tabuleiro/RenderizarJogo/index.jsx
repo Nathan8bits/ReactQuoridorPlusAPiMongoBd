@@ -8,7 +8,10 @@ import './style.css'
 //import BotaoCliqueWow from './BotaoCliqueWow'
 
 
-export default function RenderizarJogo ({jogador, setJogador, indexJogador, setIndexJogador, bloqueio, setBloqueio}) {
+export default function RenderizarJogo (
+          { jogador, setJogador, 
+            indexJogador, setIndexJogador, 
+            bloqueio, setBloqueio}) {
 
     const [lacunasPrev, setLacunasPrev] = useState([])
     const [contClickCentro, setconClickCentro] = useState(1)
@@ -35,9 +38,35 @@ export default function RenderizarJogo ({jogador, setJogador, indexJogador, setI
         qntddCentro++
       }
     }
-    function clickAddBloqueio(){
-        setBloqueio(prev => [...prev, lacunasPrev])
+
+    function clickFixarBloqueio(){
+      console.log('--------------------------------------')
+      
+      let lacunaF1 = [lacunasPrev[0], lacunasPrev[2]]
+      let lacunaF2 = [lacunasPrev[1], lacunasPrev[2]]
+      
+      console.log(lacunaF1)
+      console.log(lacunaF2)
+
+      setBloqueio(prev => [...prev, lacunaF1])
+      setBloqueio(prev => [...prev, lacunaF2])
+
+        
+        /**
+         * 
+        setBloqueio(prev => {
+          return [...prev, lacunasPrev]
+        })
+         * 
+         */
+
+        setLacunasPrev([])
+
+        console.log(`lacunas prev: ${lacunasPrev}`)
+        console.log(`bloqueios: ${bloqueio}`)
         console.log('btn FIXAR')
+
+        console.log('--------------------------------------')
     }
 
     return (
@@ -88,6 +117,7 @@ export default function RenderizarJogo ({jogador, setJogador, indexJogador, setI
                    <Centro 
                      setContClick={setconClickCentro}
                      contClick={contClickCentro}
+                     prev={lacunasPrev}
                      setLacunasPrev={setLacunasPrev} 
                      posicao={qntddCentro}></Centro> }
                  </>
@@ -137,6 +167,7 @@ export default function RenderizarJogo ({jogador, setJogador, indexJogador, setI
                    tipo={'h'}></LacunaH>
                  { i < 8 && 
                  <Centro 
+                   prev={lacunasPrev}
                    setLacunasPrev={setLacunasPrev} 
                    posicao={qntddCentro}></Centro> }
                </>
@@ -174,9 +205,10 @@ export default function RenderizarJogo ({jogador, setJogador, indexJogador, setI
         </div>
 
         <div className="container">
-            <Botao3d texto={'add block'}></Botao3d>
             <Botao3d
-                funcao={clickAddBloqueio} 
+              texto={'add bloqueio'}></Botao3d>
+            <Botao3d
+                funcao={clickFixarBloqueio}
                 texto={'fixar'}></Botao3d>
         </div>
     </>

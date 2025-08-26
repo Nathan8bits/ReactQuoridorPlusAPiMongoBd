@@ -3,21 +3,30 @@ import './style.css'
 function LacunaV(props) {
     let classe = ''
     
-
-    
-    //array[array.length - 1] 
-    //bloqueio = [posicao, tipo]
-    
-    /*
-    if(
-        props.posicao == props.bloqueio[props.bloqueio.length -1][0]
-        && props.bloqueio[props.bloqueio.length - 1][1] == 'v') {
-            classe='bloqueio'
+    function ehLacunaFixa() {
+        let estaFixada = false
+        props.lacunaFixa.forEach((index) => {
+            if(index[1] == 'v' && props.posicao == index[0]){
+                console.log(index)
+                console.log(`posicao: ${props.posicao}; tipo: ${props.tipo}`)
+                
+                estaFixada =  true
+            }
+        })
+        return estaFixada
     }
-    else 
-    
-    */
-    if (
+
+    if(
+        //props.lacunaFixa.length > 0
+        //&& props.lacunaFixa[props.lacunaFixa.length - 1][1] == 'h'
+        //&& props.posicao == props.lacunaFixa[props.lacunaFixa.length - 1][0]
+        ehLacunaFixa()
+    ) 
+    {
+            classe = 'bloqueio'
+        
+    }
+    else if (
         props.prev[2] == 'v' 
         &&(props.prev[0] == props.posicao 
         || props.prev[1] == props.posicao)) {
@@ -36,6 +45,7 @@ function LacunaV(props) {
     
     function clickLacuna() {
         //console.log(`lacuna prev: ${props.prev}`)
+        console.log(`tamanho dos bloqueios: ${props.lacunaFixa.length}`)
         console.log(props)
         console.log(`clicou na lacuna: ${props.posicao}, tipo: ${props.tipo}`)
         //console.log(`xy: ${converterCartesiano()}`)
